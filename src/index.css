@@ -35,6 +35,12 @@ body {
 }
 
 .pokemon-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: black solid 2px;
-  max-width: 325px;
+  width: 225px;
+  height: 325px;
+  border-radius: 5%;
 }

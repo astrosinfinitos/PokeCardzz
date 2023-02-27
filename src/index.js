@@ -1,12 +1,18 @@
-const boton = document.querySelector(".get-pokemon");
-boton.addEventListener("click", getRandomPokemon);
+import { getRandomNumber } from "./modules/getRandomNumber.js";
+
+const dom = {
+  name: document.querySelector(".name"),
+  boton: document.querySelector(".get-pokemon"),
+  weight: document.querySelector(".weight"),
+  height: document.querySelector(".height"),
+  pokemonImg: document.querySelector(".pokemon-img"),
+  types: document.querySelector(".types")
+};
+
+dom.boton.addEventListener("click", getRandomPokemon);
 
 const URL = "https://pokeapi.co/api/v2/pokemon/";
 const MAX_POKEMON = 151;
-
-function getRandomNumber(maxNumber) {
-  return 1 + Math.floor(Math.random() * maxNumber);
-}
 
 function getRandomPokemon() {
   const idPokemon = getRandomNumber(MAX_POKEMON);
@@ -17,25 +23,17 @@ function getRandomPokemon() {
 }
 
 function handleData(data) {
-  const name = document.querySelector(".name");
-  name.textContent = data.name;
+  dom.name.textContent = data.name;
+  dom.weight.textContent = data.weight / 10 + "kg";
+  dom.height.textContent = data.height / 10 + "m";
+  dom.pokemonImg.src = data.sprites.versions["generation-i"]["red-blue"].front_default;
 
-  const weight = document.querySelector(".weight");
-  weight.textContent = data.weight / 10 + "kg";
-
-  const height = document.querySelector(".height");
-  height.textContent = data.height / 10 + "m";
-
-  const pokemonImg = document.querySelector(".pokemon-img");
-  pokemonImg.src = data.sprites.versions["generation-i"]["red-blue"].front_default;
-
-  const types = document.querySelector(".types");
   const pokemonTypes = data.types.map((pokemon) => pokemon.type.name);
-  types.innerHTML = "";
+  dom.types.innerHTML = "";
   pokemonTypes.forEach(pokemonType => {
     const divType = document.createElement("div");
     divType.classList.add("type");
     divType.textContent = pokemonType;
-    types.appendChild(divType);
+    dom.types.appendChild(divType);
   });
 }
