@@ -42,7 +42,7 @@ body {
   align-items: center;
   border: gray outset 2px;
   width: 225px;
-  height: 325px;
+  height: 375px;
   border-radius: 5%;
   transform-style: preserve-3d;
   transform: perspective(1000px);

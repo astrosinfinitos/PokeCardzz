@@ -1,6 +1,6 @@
 import { getRandomNumber } from "./modules/getRandomNumber.js";
-import VanillaTilt from "vanilla-tilt";
-console.log(VanillaTilt);
+import { addCardEffect } from "./modules/addCardEffect.js";
+
 const dom = {
   boton: document.querySelector(".get-pokemon"),
   pokemonList: document.querySelector(".pokemon-list")
@@ -58,10 +58,5 @@ function addNewCard() {
   };
 
   getRandomPokemon(card);
-  const allCards = document.querySelectorAll(".pokemon-card");
-  VanillaTilt.init(allCards, {
-    glare: true,
-    "max-glare": 0.20,
-    speed:900
-  });
+  addCardEffect();
 }
