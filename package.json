@@ -21,5 +21,8 @@
     "vite": "^4.1.0"
   },
   "keywords": [],
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vanilla-tilt": "^1.8.0"
+  }
 }
